@@ -1,0 +1,74 @@
+<div class="register-container full-height sm-p-t-30">
+    <div class="container-sm-height full-height">
+        <div class="row row-sm-height">
+            <div class="col-sm-12 col-sm-height col-middle">
+                <img src="https://s3-eu-west-1.amazonaws.com/tahoe-assets-dev/logo/eposity-large-light.png" alt="Eposity">
+                <h3>Pages makes it easy to enjoy what matters the most in your life</h3>
+                <p>
+                    <small>
+                        Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a href="" class="text-info">Facebook</a> or <a href="" class="text-info">Google</a>
+                    </small>
+                </p>
+                <form id="form-register" class="p-t-15" role="form" name="register" novalidate ng-submit="signup()">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div pg-form-group class="form-group form-group-default" ng-class="{ 'has-error': register.username.$invalid && !register.username.$pristine }">
+                                <label>Username</label>
+                                <input type="text" name="username" placeholder="Username" class="form-control" ng-model=userName" required>
+                            </div>
+                            <label class="error" for="username" ng-show="register.username.$invalid && !register.username.$pristine">This field is required.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div pg-form-group class="form-group form-group-default" ng-class="{ 'has-error': register.companyname.$invalid && !register.companyname.$pristine }">
+                                <label>Company</label>
+                                <input type="text" name="companyname" placeholder="John" class="form-control" ng-model="companyName" required>
+                            </div>
+                            <label class="error" for="companyname" ng-show="register.companyname.$invalid && !register.companyname.$pristine">This field is required.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div pg-form-group class="form-group form-group-default" ng-class="{ 'has-error': register.pass.$invalid && !register.pass.$pristine }">
+                                <label>Password</label>
+                                <input type="password" name="pass" placeholder="Minimum of 4 Charactors" class="form-control" ng-minlength="4" ng-model=password" required>
+                            </div>
+                            <label class="error" for="pass" ng-show="register.pass.$invalid && !register.pass.$pristine">This field is required.</label>
+                            <label class="error" for="pass" ng-show="register.pass.$error.minlength">Password should have at least 4 characters</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div pg-form-group class="form-group form-group-default" ng-class="{ 'has-error': register.confirmpass.$invalid && !register.confirmpass.$pristine }">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirmpass" placeholder="Minimum of 4 Charactors" class="form-control" ng-minlength="4" ng-model="confirmPassword" required>
+                            </div>
+                            <label class="error" for="confirmpass" ng-show="register.confirmpass.$invalid && !register.confirmpass.$pristine">This field is required.</label>
+                            <label class="error" for="confirmpass" ng-show="register.confirmpass.$error.minlength">Password should have at least 4 characters</label>
+                        </div>
+                    </div>
+                    <div class="row m-t-10">
+                        <div class="col-md-6">
+                            <p>I agree to the <a href="" class="text-info small">Eposity Terms</a> and <a href="" class="text-info small">Privacy</a>.</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="" class="text-info small">Help? Contact Support</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-cons m-t-10" type="submit" ng-disabled="register.$invalid">Create a new account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" full-width">
+    <div class="register-container m-b-10 clearfix">
+        <div class="inline pull-left">
+            <img src="assets/img/pages_icon.png" alt="" class="m-t-5 " data-src="assets/img/pages_icon.png" ui-jq="unveil" data-src-retina="assets/img/pages_icon_2x.png" width="60" height="60">
+        </div>
+        <div class="col-md-10 m-t-15">
+            <p class="hinted-text small inline ">No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</p>
+        </div>
+    </div>
+</div>

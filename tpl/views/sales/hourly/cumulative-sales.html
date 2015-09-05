@@ -1,0 +1,41 @@
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="breadcrumb">
+    <li>
+        <a href="/#/">Home</a>
+    </li>
+    <li>
+        <a href="#">Hourly Sales</a>
+    </li>
+    <li>
+        <a class="active" href="#">Cumulative Sales</a>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMB -->
+
+<!-- BEGIN MAIN CONTENT -->
+<div class="container-fluid container-fixed-lg" ng-init="initCumulativeSales()">
+    <div class="row pull-left">
+        <div class="col-md-12">
+            <div id="salesDatePicker" class="input-group date col-md-4" ui-jq="datepicker" style="float:left;">
+                <input id="salesDate" type="text" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-cons" ng-click="filterCumulativeSales()">View</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 50px">
+        <div class="col-md-12">
+            <highchart id="cumulativeChart" config="chartConfig"></highchart>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#salesDatePicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+    });
+</script>

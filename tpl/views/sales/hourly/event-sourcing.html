@@ -1,0 +1,133 @@
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="breadcrumb">
+    <li>
+        <a href="#">Home</a>
+    </li>
+    <li>
+        <a href="#">Hourly Sales</a>
+    </li>
+    <li>
+        <a href="#" class="active">Event Sourced</a>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMB -->
+
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" ng-init="initEventSource()">
+    <div class="col-md-3">
+        <div class="dashboard-stat green-meadow" id="income-dashboard-stat">
+            <div class="visual">
+                <i class="fa fa-money"></i>
+            </div>
+            <div class="details">
+                <div class="number" id="total-income">£{{ DailySalesAmount | number:2 }}</div>
+                <div class="desc">
+                    Total Sales for the Day
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <div class="todo-content">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-globe"></i>Event Sourced Hourly Sales
+                    </div>
+                    <div class="inputs margin-left-10">
+                        <div class="portlet-input input-inline input-small">
+                            <div class="input right">
+
+                                <input type="date" id="schedule_form_startAt" ng-model="salesDate" ng-change="recalcSalesDate()"
+                                       name="schedule_form[startAt]" class=" form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions margin-left-10 accordion" id="accordionActions2">
+                        <a class="btn btn-circle btn-icon-only btn-default accordion-toggle tooltips" data-toggle="collapse"
+                           data-parent="#accordionActions2" data-target="#collapseOptions2" aria-expanded="true" href="#"
+                           data-original-title="Options">
+                            <i class="icon-wrench"></i>
+                        </a>
+                        <a href="#" class="btn btn-circle btn-default btn-fullscreen btn-icon-only fullscreen"
+                           data-original-title="" title="">
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default tooltips" href="javascript:;"
+                           data-original-title="Help">
+                            <i class="icon-speech font-purple"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <div id="collapseOptions2" class="collapse" aria-expanded="false" style="height: 0px;">
+
+                        <div class="portlet light grey-steel no-padding-bottom">
+                            <div class="portlet-title no-margin-bottom">
+                                <div class="caption font-grey-cascade">
+                                    <span class="caption-subject uppercase"> Options</span>
+                                </div>
+                                <div class="actions">
+                                    <a class="btn btn-circle btn-icon-only btn-default tooltips"
+                                       data-original-title="Reset all options to default">
+                                        <i class="icon-refresh"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-grey-steel no-padding-sides">
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-8 control-label no-padding-sides font-grey-cascade">
+                                                Show all records on one page?
+                                            </label>
+
+                                            <div class="col-md-4 no-padding-sides text-right">
+                                                <input type="checkbox" class="showAllRecords">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-condensed table-hover">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th class="text-right">Hour</th>
+                            <th class="text-right">Total Sales</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="entry in entries | filter:query">
+                            <td>{{ entry.Date }}</td>
+                            <td class="text-right">{{ entry.Hour }}</td>
+                            <td class="text-right">{{ entry.TotalSales }}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th class="text-right"></th>
+                            <th class="text-right">{{ DailySalesAmount }}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chart_div"></div>
+
+    </div>
+</div>
+
+<!-- END MAIN CONTENT -->
+<script src="http://code.highcharts.com/highcharts.src.js"></script>
